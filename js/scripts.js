@@ -1,32 +1,42 @@
 const squares = Array.from(document.getElementsByClassName("square"));
 
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
 
 // arrays to hold the coordinate ids of Xs and Os.
 const clickedSquaresX = [];
 const clickedSquaresO = [];
 
 // state holds who is playing and what gets checked. I'm not entirely familiar with how to create the "state" (or class, or w/e) of a "player".
-const x = "x";
-const o = "o";
+const x = "<i class='fa fa-times-circle-o' aria-hidden='true'></i>";
+const o = "<i class='fa fa-circle-o-notch' aria-hidden='true'></i>";
 let state = x;
 
 // we check for wins every click, but we continuously check for whether or not to execute "ifWon()",
+let turnCounter = 0;
 let won = false;
+let tie = false;
 
 // not really very intuitively named. This is essentially the hub for the logic of the game and the flow.
 function store(e){
+  let id = e.id;
+  let squ = document.getElementById(id)
+  let h2 = squ.children[0];
 
-if (state == x){
-  clickedSquaresX.push(e.id);
-} else {
-  clickedSquaresO.push(e.id);
-}
-  // console.log(clickedSquaresX, clickedSquaresO);
+  if (state == x) {
+    h2.style.fontSize = "17vh";
+    h2.style.marginTop = "-1vh";
+  }
+  h2.innerHTML = state;
+
+  if (state == x){
+    clickedSquaresX.push(id);
+  } else {
+   clickedSquaresO.push(id);
+  }
+
+  squ.style.pointerEvents = "none";
+
+  turnCounter++;
   checkArr();
   ifWon();
   switchState();
@@ -177,5 +187,7 @@ function reset(){
 
   state = o;
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DOM MANIPULATION~~~~~~~~~~~~~~~~~~~
 
 
