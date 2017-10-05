@@ -166,13 +166,30 @@ h2 {
   border-top:2vh solid black;
 }
 
-
-#whoWon{
-  transform: rotate(0deg);
-  margin-left: -200vh;
+#headerOverlay {
+  z-index: -1;
+  position: absolute;
+  top:0;
+  left:0;
   height: 100vh;
   width: 100vw;
   background-color: rgba(255,255,255,0.5);
+  opacity:0;
+  animation-duration: 5s;
+  /*animation-iteration-count: 1;*/
+  animation-timing-function :linear;
+}
+
+
+#whosTurn{
+  transform: rotate(0deg);
+  margin-top: 15vh;
+  font-size: 50vh;
+  margin-left: -200vh;
+  /*white-space: pre;*/
+  animation-duration: 5s;
+  /*animation-iteration-count: 1;*/
+  animation-timing-function :linear;
 }
 
 @keyframes spin{
@@ -186,12 +203,18 @@ h2 {
 }
 
 @keyframes zoominout {
-  0%{margin-left: -210vw;}
-  20%{margin-left: 30vw;}
-  30%{margin-left: 10vw;}
-  70%{margin-left: 10vw;}
-  80%{margin-left: 0vw;}
-  100%{margin-left: 210vw;}
+  0%{margin-left: -110vw;}
+  20%{margin-left: 50vw;}
+  30%{margin-left: 35vw;}
+  70%{margin-left: 35vw;}
+  80%{margin-left: 10vw;}
+  100%{margin-left: 110vw;}
+}
+
+@keyframes sortaModal {
+  0%,100%{z-index: -1; opacity:0;}
+  10%,90%{z-index: 9999; opacity:1;}
+  /*50%{z-index: 9999; pointer-events: none; opacity:1;}*/
 }
 
 

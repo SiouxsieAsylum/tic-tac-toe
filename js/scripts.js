@@ -19,7 +19,7 @@ let tie = false;
 // not really very intuitively named. This is essentially the hub for the logic of the game and the flow.
 function store(e){
   let id = e.id;
-  let squ = document.getElementById(id)
+  let squ = document.getElementById(id);
   let h2 = squ.children[0];
 
   if (state == x) {
@@ -191,13 +191,33 @@ function reset(){
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DOM MANIPULATION~~~~~~~~~~~~~~~~~~~
+let turnText = document.getElementById("whosTurn");
+let headerOverlay = document.getElementById("headerOverlay");
+
+// code adapted from https://stackoverflow.com/questions/4797675/how-do-i-re-trigger-a-webkit-css-animation-via-javascript
+
+headerOverlay.addEventListener('webkitAnimationEnd', function(){
+    this.style.animationName = "";
+  });
+
+turnText.addEventListener('webkitAnimationEnd', function(){
+    this.style.animationName = "";
+  })
+
 
 function animateHeader(state){
-  let winnerText = document.getElementById("whoWon");
+  headerOverlay.style.animationName = "sortaModal";
+  turnText.innerHTML = `${state}`;
+  turnText.style.animationName="zoominout";
 
-  winnerText.innerHTML = `Next Turn: ${state}`;
-  winnerText.style.animation="zoominout 5s 1 linear"
+
 }
 
+// function resetAnimation(){
+//   headerOverlay.style.animationPlayState = "paused";
+//   turnText.style.animationPlayState="paused"
+
+//   // setInterval(resetAnimation, 5100);
+// }
 // custom event listener for when state changes
 // custom event lsitener fo when the game is over
