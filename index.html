@@ -16,12 +16,13 @@
   <body>
     <h1 id = "game-header">Spin-Tac-Toe</h1>
 
-   <div id="headerOverlay">
+  <div id="headerOverlay">
     <h1 id="whosTurn"></h1>
+    <h1 id="whoWon"></h1>
   </div>
 
-  <div class="spinner" id = "bigger">
-    <div class="spinner" id = "big">
+  <div class="spinner spin" id = "bigger">
+    <div class="spinner oppospin" id = "big">
       </div>
   </div>
 
@@ -65,7 +66,14 @@
 
 
 </div>
-
+<div id="sidebar">
+  <!-- <h2>Welcome to Spin-Tac-Toe!</h2> -->
+  <h3>Welcome to Spin-Tac-Toe!</h3>
+  <button onclick="boxesSpin()">Stop Boxes</button>
+  <button>Stop Icons</button>
+  <h3>Previous Winners!</h3>
+  <ul id="prevWinners"></ul>
+</div>
     <script src="js/scripts.js" type="text/javascript" ></script>
 </body>
 </html>

@@ -22,6 +22,7 @@ function store(e){
   let squ = document.getElementById(id);
   let h2 = squ.children[0];
 
+
   if (state == x) {
     h2.style.fontSize = "17vh";
     h2.style.marginTop = "-4vh";
@@ -41,6 +42,7 @@ function store(e){
   checkArr();
   ifWon();
   switchState();
+  // iconSpin(e);
 }
 
 // all of X's counters
@@ -209,15 +211,24 @@ function animateHeader(state){
   headerOverlay.style.animationName = "sortaModal";
   turnText.innerHTML = `${state}`;
   turnText.style.animationName="zoominout";
-
-
 }
 
-// function resetAnimation(){
-//   headerOverlay.style.animationPlayState = "paused";
-//   turnText.style.animationPlayState="paused"
+// attempting to give players the option of stopping the icons from spinning
+function iconSpin(e){
+  // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
+  for (let sq in squares){
 
-//   // setInterval(resetAnimation, 5100);
-// }
-// custom event listener for when state changes
-// custom event lsitener fo when the game is over
+  }
+}
+
+// giving the players the option to turn off the spinning boxes in the back
+function boxesSpin(){
+  let whiteBox = document.getElementById("bigger");
+  let blackBox = document.getElementById("big");
+
+  whiteBox.classList.toggle("spin");
+  blackBox.classList.toggle("oppospin");
+
+  console.log(whiteBox.style.animationName);
+  console.log(blackBox.style.animationName);
+}
