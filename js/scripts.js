@@ -121,6 +121,7 @@ function checkArr(){
 // player 1? now it's player 2. And vice versa.
 function switchState(){
   state == x ? state = o : state = x;
+  animateHeader(state);
   console.log(`state now = ${state}`);
 }
 
@@ -191,4 +192,12 @@ function reset(){
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DOM MANIPULATION~~~~~~~~~~~~~~~~~~~
 
+function animateHeader(state){
+  let winnerText = document.getElementById("whoWon");
 
+  winnerText.innerHTML = `Next Turn: ${state}`;
+  winnerText.style.animation="zoominout 5s 1 linear"
+}
+
+// custom event listener for when state changes
+// custom event lsitener fo when the game is over

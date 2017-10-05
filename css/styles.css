@@ -37,6 +37,17 @@ body{
   justify-content: center;
 }
 
+h1{
+  position: absolute;
+  left: 0vw;
+  top: 10vh;
+  transform: rotate(-10deg);
+  text-shadow: 0vh 0vh 1vh white;
+  font-size: 8vh;
+  font-family: 'Stalinist One', cursive;
+  z-index: 3;
+}
+
 
 #bigger{
   position: relative;
@@ -155,6 +166,15 @@ h2 {
   border-top:2vh solid black;
 }
 
+
+#whoWon{
+  transform: rotate(0deg);
+  margin-left: -200vh;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(255,255,255,0.5);
+}
+
 @keyframes spin{
     from{transform: rotate(0deg);}
     to{transform: rotate(360deg)};
@@ -165,7 +185,13 @@ h2 {
     to{transform: rotate(-360deg)};
 }
 
-/*@keyframes still{
-    from{transform: rotate(0deg);}
-    to{transform: rotate(0deg)};
-}*/
+@keyframes zoominout {
+  0%{margin-left: -210vw;}
+  20%{margin-left: 30vw;}
+  30%{margin-left: 10vw;}
+  70%{margin-left: 10vw;}
+  80%{margin-left: 0vw;}
+  100%{margin-left: 210vw;}
+}
+
+

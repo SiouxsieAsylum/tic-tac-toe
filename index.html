@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tic-Tac-Toe</title>
+
 
   <link rel="stylesheet" href="https://use.fontawesome.com/87ea9562e2.css">
+  <!-- <link rel="apple-touch-icon" sizes="114x114" href="favicon/favicon-114.png"> -->
   <link rel="stylesheet" type="text/css" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Stalinist+One" rel="stylesheet">
 
+    <title>Tic-Tac-Toe</title>
 
 </head>
 <!-- <body onload="addListener()"> -->
   <body>
+    <h1 id = "game-header">Spin-Tac-Toe</h1>
 
   <div class="spinner" id = "bigger">
     <div class="spinner" id = "big">
@@ -54,6 +58,9 @@
         <div class="square" id="bottom-right" onclick="store(this)"><h2></h2></div>
       </div>
 
+  <div id="headerOverlay">
+    <h1 id="whosTurn"></h1>
+  </div>
 
 </div>
 
