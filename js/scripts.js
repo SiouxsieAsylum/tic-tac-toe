@@ -48,6 +48,7 @@ function store(e){
 // all of X's counters
 let topCounterX = 0;
 let middleCounterX = 0;
+let centerCounterX = 0;
 let bottomCounterX = 0;
 let leftCounterX = 0;
 let rightCounterX = 0;
@@ -55,6 +56,7 @@ let rightCounterX = 0;
 // all of O's counters
 let topCounterO = 0;
 let middleCounterO = 0;
+let centerCounterO = 0;
 let bottomCounterO = 0;
 let leftCounterO = 0;
 let rightCounterO = 0;
@@ -79,7 +81,10 @@ function checkArr(){
           checkWin(topCounterX);
         }else if (cs.includes("middle")){
           middleCounterX++;
-          clickedSquaresX.includes("true-middle") ? checkWin(middleCounterX) : false;
+           checkWin(middleCounterX);
+        }else if (cs.includes("center")){
+          centerCounterX++;
+           checkWin(centerCounterX);
         } else if (cs.includes("bottom")){
           bottomCounterX++;
           checkWin(bottomCounterX);
@@ -100,7 +105,10 @@ function checkArr(){
           checkWin(topCounterO);
         }else if (cs.includes("middle")){
           middleCounterO++;
-          clickedSquaresO.includes("true-middle") ? checkWin(middleCounterO) : false;
+           checkWin(middleCounterO);
+        }else if (cs.includes("center")){
+          centerCounterO++;
+           checkWin(centerCounterO);
         } else if (cs.includes("bottom")){
           bottomCounterO++;
           checkWin(bottomCounterO);
@@ -116,15 +124,14 @@ function checkArr(){
 
 
   // this is mostly for my own record keeping, values are safe.
-  console.log(`X - topcounter = ${topCounterX}, middlecounter = ${middleCounterX}, bottomcounter = ${bottomCounterX}, leftcounter = ${leftCounterX}, rightcounter = ${rightCounterX}`);
-  console.log(`O - topcounter = ${topCounterO}, middlecounter = ${middleCounterO}, bottomcounter = ${bottomCounterO}, leftcounter = ${leftCounterO}, rightcounter = ${rightCounterO}`);
+  console.log(`X - topcounter = ${topCounterX}, middlecounter = ${middleCounterX}, centercounter=${centerCounterX} bottomcounter = ${bottomCounterX}, leftcounter = ${leftCounterX}, rightcounter = ${rightCounterX}`);
+  console.log(`O - topcounter = ${topCounterO}, middlecounter = ${middleCounterO}, centercounter=${centerCounterO}, bottomcounter = ${bottomCounterO}, leftcounter = ${leftCounterO}, rightcounter = ${rightCounterO}`);
 }
 
 // player 1? now it's player 2. And vice versa.
 function switchState(){
   state == x ? state = o : state = x;
   animateHeader(state);
-  console.log(`state now = ${state}`);
 }
 
 // has "top" or "left" or w/e occured 3 times? If not, check the diagonals.
@@ -134,8 +141,8 @@ function checkWin(num){
 
 // does clickedSquaresX/O contain all 3 front diagonals? What about all back diagonals? Neither? Keep on trucking.
 function diagonalWin(){
-  let frontDiag = ["top-left","true-middle","bottom-right"];
-  let backDiag = ["top-right","true-middle","bottom-left"];
+  let frontDiag = ["top-left","middle-center","bottom-right"];
+  let backDiag = ["top-right","middle-center","bottom-left"];
 
   if (state == x){
     let xCounter = 0;
@@ -214,10 +221,11 @@ function animateHeader(state){
 }
 
 // attempting to give players the option of stopping the icons from spinning
-function iconSpin(e){
+function iconSpin(){
   // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
-  for (let sq in squares){
-
+  for (let sq of squares){
+    // console.log(`<h2>${x}</h2>`);
+    // console.log(sq.innerHTML.includes(x));
   }
 }
 
@@ -229,6 +237,8 @@ function boxesSpin(){
   whiteBox.classList.toggle("spin");
   blackBox.classList.toggle("oppospin");
 
-  console.log(whiteBox.style.animationName);
-  console.log(blackBox.style.animationName);
+}
+
+function winHeader(){
+  let winText = document.getElementById("whoWon");
 }
