@@ -18,7 +18,8 @@
 
   <div id="headerOverlay">
     <h1 id="whosTurn"></h1>
-    <h1 id="whoWon"></h1>
+    <h1 id="whoWon">Winner!!!</h1>
+    <button id="resetButton" onclick = "reset()">Play Again?</button>
   </div>
 
   <div class="spinner spin" id = "bigger">
@@ -67,12 +68,13 @@
 
 </div>
 <div id="sidebar">
+  <i class="fa fa-bars fa-2x" aria-hidden="true" style="color:white; padding: 1vh;"></i>
   <!-- <h2>Welcome to Spin-Tac-Toe!</h2> -->
   <h3>Welcome to Spin-Tac-Toe!</h3>
   <button onclick="boxesSpin()">Stop Boxes</button>
-  <button onclick="iconSpin()">Stop Icons</button>
-  <h3>Previous Winners!</h3>
-  <ul id="prevWinners"></ul>
+  <!-- <button onclick="tieGame()">Stop Icons</button> -->
+  <h3 id = "winners">Previous Winner!</h3>
+  <h1 id="prevWinners"></h1>
 </div>
     <script src="js/scripts.js" type="text/javascript" ></script>
 </body>

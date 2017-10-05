@@ -38,11 +38,9 @@ function store(e){
   squ.style.pointerEvents = "none";
 
   turnCounter++;
-  turnCounter == 9 ? console.log("game over!! No winners.") : console.log(turnCounter);
+  turnCounter == 9 ? tieGame() : console.log(turnCounter);
   checkArr();
   ifWon();
-  switchState();
-  // iconSpin(e);
 }
 
 // all of X's counters
@@ -124,8 +122,8 @@ function checkArr(){
 
 
   // this is mostly for my own record keeping, values are safe.
-  console.log(`X - topcounter = ${topCounterX}, middlecounter = ${middleCounterX}, centercounter=${centerCounterX} bottomcounter = ${bottomCounterX}, leftcounter = ${leftCounterX}, rightcounter = ${rightCounterX}`);
-  console.log(`O - topcounter = ${topCounterO}, middlecounter = ${middleCounterO}, centercounter=${centerCounterO}, bottomcounter = ${bottomCounterO}, leftcounter = ${leftCounterO}, rightcounter = ${rightCounterO}`);
+  console.log(`X - topcounter = ${topCounterX}, middlecounter = ${middleCounterX}, centercounter = ${centerCounterX} bottomcounter = ${bottomCounterX}, leftcounter = ${leftCounterX}, rightcounter = ${rightCounterX}`);
+  console.log(`O - topcounter = ${topCounterO}, middlecounter = ${middleCounterO}, centercounter = ${centerCounterO}, bottomcounter = ${bottomCounterO}, leftcounter = ${leftCounterO}, rightcounter = ${rightCounterO}`);
 }
 
 // player 1? now it's player 2. And vice versa.
@@ -157,6 +155,7 @@ function diagonalWin(){
 )    }
 
     xCounter == 3 ? won = true : won;
+    // xCounter == 3 ? console.log(true) : console.log(false);
 
   }else{
       let oCounter = 0;
@@ -175,33 +174,64 @@ function diagonalWin(){
 }
 
 
-
+// executes the win logic
 function ifWon(){
   if (won) {
     console.log(`${state} wins!`);
-    reset();
+    winHeader();
+  } else {
+    switchState();
   }
 }
 
 function reset(){
+
+  for (let sq of squares){
+    sq.innerHTML = "<h2></h2>";
+    sq.style.pointerEvents = "initial";
+  }
+
   topCounterX = 0;
   middleCounterX = 0;
+  centerCounterX = 0;
   bottomCounterX = 0;
   leftCounterX = 0;
   rightCounterX = 0;
 
   topCounterO = 0;
   middleCounterO = 0;
+  centerCounterO = 0;
   bottomCounterO = 0;
   leftCounterO = 0;
   rightCounterO = 0;
 
-  state = o;
+  whiteBox.classList.add("spin");
+  blackBox.classList.add("oppospin");
+
+  winText.style.animationName= "";
+  turnText.style.animationDuration= "3s";
+  turnText.style.animationName= "";
+  headerOverlay.style.zIndex = "-1";
+  headerOverlay.style.opacity = "0";
+  winText.style.marginLeft = "34vw";
+
+  header.style.opacity="1";
+  button.style.opacity = "0";
+
+  turnCounter = 0;
+  state = x;
+  won = false;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DOM MANIPULATION~~~~~~~~~~~~~~~~~~~
 let turnText = document.getElementById("whosTurn");
 let headerOverlay = document.getElementById("headerOverlay");
+let whiteBox = document.getElementById("bigger");
+let blackBox = document.getElementById("big");
+let winText = document.getElementById("whoWon");
+let button = document.getElementById("resetButton");
+let header = document.getElementById("game-header");
+let winner = document.getElementById("prevWinners");
 
 // code adapted from https://stackoverflow.com/questions/4797675/how-do-i-re-trigger-a-webkit-css-animation-via-javascript
 
@@ -221,24 +251,52 @@ function animateHeader(state){
 }
 
 // attempting to give players the option of stopping the icons from spinning
-function iconSpin(){
-  // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
-  for (let sq of squares){
-    // console.log(`<h2>${x}</h2>`);
-    // console.log(sq.innerHTML.includes(x));
-  }
-}
+// function iconSpin(){
+//   // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
+//   for (let sq of squares){
+//     // console.log(`<h2>${x}</h2>`);
+//     // console.log(sq.innerHTML.includes(x));
+//   }
+// }
 
 // giving the players the option to turn off the spinning boxes in the back
 function boxesSpin(){
-  let whiteBox = document.getElementById("bigger");
-  let blackBox = document.getElementById("big");
+  // let whiteBox = document.getElementById("bigger");
+  // let blackBox = document.getElementById("big");
 
   whiteBox.classList.toggle("spin");
   blackBox.classList.toggle("oppospin");
 
 }
 
+function endGame(){
+
+  header.style.opacity="0";
+
+  headerOverlay.style.zIndex = "9999";
+  headerOverlay.style.opacity = "1";
+
+  button.style.opacity = "1";
+
+  turnText.style.marginLeft = "35vw";
+  turnText.style.animationDuration = "1s";
+  turnText.style.animationFillMode = "forwards";
+
+  winText.style.animationName= "winAnimation";
+  turnText.style.animationName= "winAnimation";
+}
+
 function winHeader(){
-  let winText = document.getElementById("whoWon");
+
+  turnText.innerHTML = state;
+  winner.innerHTML = state;
+
+  endGame();
+}
+
+function tieGame(){
+  winText.style.marginLeft = "25vw";
+  winText.innerHTML = "Game Over";
+  turnText.innerHTML = "<i class='fa fa-thumbs-o-down' aria-hidden='true'></i>";
+  endGame();
 }
