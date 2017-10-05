@@ -1,35 +1,3 @@
-/*priorities come the morn
-  Heading/splash page for game
-
-
-  Animate a heading for:
-  ~Person's turn
-  ~Person won
-  ~Tie Game
-
-  ~Do you wanna play again button(div.style.animationname, etc)
-  ~Turn spin on/off button for icons and divs (toggleclass)
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 body{
   overflow: hidden;
   background-color:rgb(183, 183, 183);
