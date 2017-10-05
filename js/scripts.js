@@ -7,8 +7,8 @@ const clickedSquaresX = [];
 const clickedSquaresO = [];
 
 // state holds who is playing and what gets checked. I'm not entirely familiar with how to create the "state" (or class, or w/e) of a "player".
-const x = "<i class='fa fa-times-circle-o' aria-hidden='true'></i>";
-const o = "<i class='fa fa-circle-o-notch' aria-hidden='true'></i>";
+const x = "<i class='fa fa-times-circle-o fa-spin' aria-hidden='true'></i>";
+const o = "<i class='fa fa-circle-o-notch fa-spin' aria-hidden='true'></i>";
 let state = x;
 
 // we check for wins every click, but we continuously check for whether or not to execute "ifWon()",
@@ -24,7 +24,7 @@ function store(e){
 
   if (state == x) {
     h2.style.fontSize = "17vh";
-    h2.style.marginTop = "-1vh";
+    h2.style.marginTop = "-4vh";
   }
   h2.innerHTML = state;
 
@@ -37,6 +37,7 @@ function store(e){
   squ.style.pointerEvents = "none";
 
   turnCounter++;
+  turnCounter == 9 ? console.log("game over!! No winners.") : console.log(turnCounter);
   checkArr();
   ifWon();
   switchState();
@@ -76,7 +77,7 @@ function checkArr(){
           checkWin(topCounterX);
         }else if (cs.includes("middle")){
           middleCounterX++;
-          checkWin(middleCounterX);
+          clickedSquaresX.includes("true-middle") ? checkWin(middleCounterX) : false;
         } else if (cs.includes("bottom")){
           bottomCounterX++;
           checkWin(bottomCounterX);
@@ -97,7 +98,7 @@ function checkArr(){
           checkWin(topCounterO);
         }else if (cs.includes("middle")){
           middleCounterO++;
-          checkWin(middleCounterO);
+          clickedSquaresO.includes("true-middle") ? checkWin(middleCounterO) : false;
         } else if (cs.includes("bottom")){
           bottomCounterO++;
           checkWin(bottomCounterO);
