@@ -218,6 +218,7 @@ function reset(){
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DOM MANIPULATION~~~~~~~~~~~~~~~~~~~
 let turnText = document.getElementById("whosTurn");
+let spinText = document.getElementById("spinner");
 let headerOverlay = document.getElementById("headerOverlay");
 let whiteBox = document.getElementById("bigger");
 let blackBox = document.getElementById("big");
@@ -239,8 +240,12 @@ turnText.addEventListener('webkitAnimationEnd', function(){
 
 function animateHeader(state){
   headerOverlay.style.animationName = "sortaModal";
+
   turnText.innerHTML = `${state}`;
-  turnText.style.animationName="zoominout";
+
+  turnText.style.animationName = "spin";
+  spinText.style.animationName="zoominout";
+
 }
 
 // attempting to give players the option of stopping the icons from spinning
@@ -253,8 +258,6 @@ function iconSpin(){
 
 // giving the players the option to turn off the spinning boxes in the back
 function boxesSpin(){
-  // let whiteBox = document.getElementById("bigger");
-  // let blackBox = document.getElementById("big");
 
   whiteBox.classList.toggle("spin");
   blackBox.classList.toggle("oppospin");
