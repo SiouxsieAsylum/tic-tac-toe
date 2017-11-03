@@ -37,11 +37,11 @@ h1{
 }
 
 .oppospin{
-  /*animation: oppospin 3s infinite linear;*/
+  animation: oppospin 3s infinite linear;
 }
 
 .spin {
-  /*animation: spin 5s infinite linear;*/
+  animation: spin 5s infinite linear;
 }
 
 #foreground, #background{
