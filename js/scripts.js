@@ -233,7 +233,7 @@ headerOverlay.addEventListener('webkitAnimationEnd', function(){
     this.style.animationName = "";
   });
 
-turnText.addEventListener('webkitAnimationEnd', function(){
+spinText.addEventListener('webkitAnimationEnd', function(){
     this.style.animationName = "";
   })
 
@@ -241,11 +241,9 @@ turnText.addEventListener('webkitAnimationEnd', function(){
 function animateHeader(state){
   headerOverlay.style.animationName = "sortaModal";
 
-  turnText.innerHTML = `${state}`;
-
+  turnText.innerHTML = `${state}`
   turnText.style.animationName = "spin";
-  spinText.style.animationName="zoominout";
-
+  spinText.style.animationName = "zoominout";
 }
 
 // attempting to give players the option of stopping the icons from spinning

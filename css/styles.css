@@ -178,12 +178,15 @@ h2 {
   font-size: 50vh;
   animation-duration: 3s;
   animation-timing-function:linear;
+  animation-iteration-count: infinite;
 }
 
 #spinner {
+  margin-left: -200vw;
   position: relative;
   animation-duration: 3s;
   animation-timing-function:linear;
+
 }
 
 #sidebar {
