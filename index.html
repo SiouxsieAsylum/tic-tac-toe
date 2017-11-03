@@ -22,12 +22,10 @@
     <button id="resetButton" onclick = "reset()">Play Again?</button>
   </div>
 
-  <div class="spinner spin" id = "bigger">
-    <div class="spinner oppospin" id = "big">
-      </div>
-  </div>
+<div id="foreground">
+  <div id = "grid-container">
 
-    <div id = "grid-container">
+    <div class="third" id="middle">
       <div class = "square-container" id="right-bottom-border">
         <div class="square" id="top-left" onclick="store(this)"><h2></h2></div>
       </div>
@@ -39,7 +37,9 @@
       <div class = "square-container" id="left-bottom-border">
         <div class="square" id="top-right" onclick="store(this)"><h2></h2></div>
       </div>
+    </div>
 
+    <div class="third" id="mid">
       <div class = "square-container" id="top-right-bottom-border">
         <div class="square" id="middle-left" onclick="store(this)"><h2></h2></div>
       </div>
@@ -51,7 +51,9 @@
       <div class = "square-container" id="top-left-bottom-border">
         <div class="square" id="middle-right" onclick="store(this)"><h2></h2></div>
       </div>
+     </div>
 
+     <div class="third" id="bottom">
       <div class = "square-container" id="right-top-border">
         <div class="square" id="bottom-left" onclick="store(this)"><h2></h2></div>
       </div>
@@ -63,12 +65,21 @@
       <div class = "square-container" id="left-top-border">
         <div class="square" id="bottom-right" onclick="store(this)"><h2></h2></div>
       </div>
-
-
-
+    </div>
+  </div>
 </div>
+
+<div id="background">
+  <div class="spinner spin" id = "bigger">
+    <div class="spinner oppospin" id = "big">
+      </div>
+  </div>
+</div>
+
+
+
 <div id="sidebar">
-  <i class="fa fa-bars fa-2x" aria-hidden="true" style="color:white; padding: 1vh;"></i>
+  <i class="fa fa-bars 2x" aria-hidden="true" style="color:white; padding: 1vh;"></i>
   <!-- <h2>Welcome to Spin-Tac-Toe!</h2> -->
   <h3>Welcome to Spin-Tac-Toe!</h3>
   <button onclick="boxesSpin()">Stop Boxes</button>

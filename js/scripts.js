@@ -24,8 +24,9 @@ function store(e){
 
 
   if (state == x) {
-    h2.style.fontSize = "17vh";
-    h2.style.marginTop = "-4vh";
+    h2.style.fontSize = "7vw";
+    h2.style.margin = "auto"
+    // h2.style.marginTop = "-4vh";
   }
   h2.innerHTML = state;
 
