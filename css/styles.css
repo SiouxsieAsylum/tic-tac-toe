@@ -221,11 +221,12 @@ h2 {
   margin-top: 0vh;
   font-size: 2vh;
   padding: 2vh 4vh 2vh 4vh;
+  outline: none;
 }
 
-#sidebar button:focus {
+#sidebar button:active {
   box-shadow: 0vh 0vh 3vh 3vh white;
-  outline: none;
+
 }
 
 
@@ -251,8 +252,8 @@ h2 {
 @keyframes zoominout {
   0%{margin-left: -110vw;}
   20%{margin-left: 50vw;}
-  30%{margin-left: 35vw;}
-  70%{margin-left: 35vw;}
+  30%{margin-left: 25vw;}
+  70%{margin-left: 25vw;}
   80%{margin-left: 10vw;}
   100%{margin-left: 110vw;}
 }

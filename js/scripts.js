@@ -7,8 +7,8 @@ const clickedSquaresX = [];
 const clickedSquaresO = [];
 
 // state holds who is playing and what gets checked. I'm not entirely familiar with how to create the "state" (or class, or w/e) of a "player".
-const x = "<i class='fa fa-times-circle-o fa-spin' aria-hidden='true'></i>";
-const o = "<i class='fa fa-circle-o-notch fa-spin' aria-hidden='true'></i>";
+const x = "<i class='fa fa-times-circle-o' aria-hidden='true'></i>";
+const o = "<i class='fa fa-circle-o-notch' aria-hidden='true'></i>";
 let state = x;
 
 // we check for wins every click, but we continuously check for whether or not to execute "ifWon()",
@@ -22,13 +22,10 @@ function store(e){
   let squ = document.getElementById(id);
   let h2 = squ.children[0];
 
-
-  if (state == x) {
     h2.style.fontSize = "7vw";
     h2.style.margin = "auto"
-    // h2.style.marginTop = "-4vh";
-  }
-  h2.innerHTML = state;
+    h2.innerHTML = state;
+    h2.classList.add("fa-spin");
 
   if (state == x){
     clickedSquaresX.push(id);
@@ -59,10 +56,6 @@ let centerCounterO = 0;
 let bottomCounterO = 0;
 let leftCounterO = 0;
 let rightCounterO = 0;
-
-// pretty much all of my functions are "if X do this, if O do exactky same thing but for O" and I feel like there has to be a better way
-
-//...can't think of one though, so here we go
 
 function checkArr(){
   // check the last square clicked by either X or O
@@ -156,7 +149,6 @@ function diagonalWin(){
 )    }
 
     xCounter == 3 ? won = true : won;
-    // xCounter == 3 ? console.log(true) : console.log(false);
 
   }else{
       let oCounter = 0;
@@ -252,13 +244,12 @@ function animateHeader(state){
 }
 
 // attempting to give players the option of stopping the icons from spinning
-// function iconSpin(){
-//   // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
-//   for (let sq of squares){
-//     // console.log(`<h2>${x}</h2>`);
-//     // console.log(sq.innerHTML.includes(x));
-//   }
-// }
+function iconSpin(){
+  // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
+  for (let sq of squares){
+    sq.children[0].classList.toggle("fa-spin");
+  }
+}
 
 // giving the players the option to turn off the spinning boxes in the back
 function boxesSpin(){
