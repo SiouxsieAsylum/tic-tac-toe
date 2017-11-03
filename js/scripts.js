@@ -25,7 +25,7 @@ function store(e){
     h2.style.fontSize = "7vw";
     h2.style.margin = "auto"
     h2.innerHTML = state;
-    h2.classList.add("fa-spin");
+    iconClicks % 2 === 0 ? h2.classList.add("fa-spin") : h2;
 
   if (state == x){
     clickedSquaresX.push(id);
@@ -226,6 +226,7 @@ let winText = document.getElementById("whoWon");
 let button = document.getElementById("resetButton");
 let header = document.getElementById("game-header");
 let winner = document.getElementById("prevWinners");
+let iconClicks = 0;
 
 // code adapted from https://stackoverflow.com/questions/4797675/how-do-i-re-trigger-a-webkit-css-animation-via-javascript
 
@@ -248,10 +249,16 @@ function animateHeader(state){
 
 // attempting to give players the option of stopping the icons from spinning
 function iconSpin(){
-  // replace inner html of all squares to icons without those class names. reset state to icons without spinny classes
-  for (let sq of squares){
-    sq.children[0].classList.toggle("fa-spin");
+  if (iconClicks % 2 === 0){
+    for (let sq of squares){
+    sq.children[0].classList.remove("fa-spin");
+    }
+  }else{
+    for (let sq of squares){
+    sq.children[0].classList.add("fa-spin");
+    }
   }
+  iconClicks++;
 }
 
 // giving the players the option to turn off the spinning boxes in the back
